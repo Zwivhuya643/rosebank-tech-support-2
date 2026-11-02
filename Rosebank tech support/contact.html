@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rosebank Tech Support | Contact</title>
+  <meta name="description" content="Contact Rosebank Tech Support for general enquiries — email, phone, location and support hours for Rosebank College's IT help desk.">
+  <link rel="preconnect" href="https://unpkg.com">
+  <link rel="preconnect" href="https://tile.openstreetmap.org">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <img src="Images/logo.png" alt="Rosebank Tech Support logo" class="logo">
+    <nav>
+      <a href="index.html">Index</a>
+      <a href="home.html">Home</a>
+      <a href="about-us.html">About Us</a>
+      <a href="services.html">Services</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="FAQ.html">FAQ</a>
+      <a href="contact.html">Contact Us</a>
+      <a href="enquiry.html">Enquiry</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-header">
+      <h1>Contact Us</h1>
+      <p>We are here to help you with your technology problems.</p>
+    </section>
+
+    <section class="content-image">
+      <img src="Images/H.webp" alt="Smiley face representing friendly customer support" loading="lazy" style="max-width:520px;margin:0 auto;">
+    </section>
+
+    <section class="contact-section">
+      <div class="contact-container">
+
+        <div class="contact-information">
+          <h2>Get In Touch</h2>
+          <p>
+            If you are experiencing a technical problem, please contact
+            Rosebank Tech Support. Our team is ready to provide professional,
+            reliable, and friendly technical assistance.
+          </p>
+
+          <div class="contact-item">
+            <h3>Email</h3>
+            <p>support@rosebanktechsupport.com</p>
+          </div>
+
+          <div class="contact-item">
+            <h3>Phone</h3>
+            <p>072 194 3314</p>
+          </div>
+
+          <div class="contact-item">
+            <h3>Location</h3>
+            <p>Rosebank, Johannesburg, South Africa</p>
+          </div>
+
+          <div class="contact-item">
+            <h3>Support Hours</h3>
+            <p>Monday - Friday: 08:00 - 17:00</p>
+          </div>
+
+          <div class="contact-item">
+            <h3>Find Us</h3>
+            <div id="map" style="height: 300px; border-radius: 10px; margin-top: 10px;"></div>
+          </div>
+        </div>
+
+        <div class="contact-form">
+          <h2>Send Us a Message</h2>
+          <form id="contactForm">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="What can we help you with?" required>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="6" placeholder="Describe your problem..." required></textarea>
+
+            <button type="submit" class="btn">Send Message</button>
+            <p id="formMessage"></p>
+          </form>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Rosebank Tech Support</p>
+    <p>Reliable &bull; Secure &bull; Connected</p>
+  </footer>
+
+  <script src="script.js"></script>
+
+  <script>
+    const map = L.map('map').setView([-26.1461, 28.0411], 15);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors',
+      maxZoom: 19
+    }).addTo(map);
+    L.marker([-26.1461, 28.0411])
+      .addTo(map)
+      .bindPopup('<strong>Rosebank Tech Support</strong><br>Rosebank, Johannesburg')
+      .openPopup();
+  </script>
+</body>
+</html>

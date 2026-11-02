@@ -1,0 +1,638 @@
+/* =========================================================
+   ROSEBANK TECH SUPPORT — style.css
+   Part 2: Desktop styling + Responsive design
+   Part 3: Lightbox, form validation, service search
+   ========================================================= */
+
+/* ---------- 1. CSS RESET ---------- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Make the HTML 'hidden' attribute always win (needed for the enquiry form confirmation) */
+[hidden] {
+  display: none !important;
+}
+
+/* ---------- 2. BASE / VARIABLES ---------- */
+:root {
+  --color-primary: #1a56b0;
+  --color-primary-dark: #123f82;
+  --color-accent: #e6f0fa;
+  --color-white: #ffffff;
+  --color-grey-light: #f4f5f7;
+  --color-grey: #d9dce1;
+  --color-grey-dark: #6b7280;
+  --color-text: #222831;
+
+  --font-base: "Aptos", "Segoe UI", Arial, sans-serif;
+  --font-heading: "Aptos", "Segoe UI", Arial, sans-serif;
+
+  --fs-h1: 2.5rem;
+  --fs-h2: 1.9rem;
+  --fs-h3: 1.3rem;
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+
+  --radius: 10px;
+  --shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  --transition: 0.2s ease-in-out;
+}
+
+body {
+  font-family: var(--font-base);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-grey-light);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--color-primary-dark);
+}
+
+h1 { font-size: var(--fs-h1); }
+h2 { font-size: var(--fs-h2); margin-bottom: 1rem; }
+h3 { font-size: var(--fs-h3); margin-bottom: 0.5rem; }
+
+p { margin-bottom: 0.75rem; }
+
+/* ---------- 3. HEADER & NAVIGATION ---------- */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-grey);
+}
+
+header img {
+  height: 110px;
+  width: auto;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+nav a {
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--color-text);
+  padding: 0.5rem 0.25rem;
+  border-bottom: 2px solid transparent;
+  transition: color var(--transition), border-color var(--transition);
+}
+
+nav a:hover,
+nav a:focus {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+}
+
+nav a:active {
+  color: var(--color-primary-dark);
+}
+
+/* ---------- 4. LAYOUT: MAIN & PAGE HEADER (HERO) ---------- */
+main {
+  display: block;
+  width: 100%;
+}
+
+.page-header {
+  background-color: var(--color-primary-dark);
+  background-image:
+    linear-gradient(135deg, rgba(26, 86, 176, 0.75) 0%, rgba(18, 63, 130, 0.85) 100%),
+    url("Images/hero-bg.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: var(--color-white);
+  text-align: center;
+  padding: 4rem 1.5rem;
+}
+
+.page-header h1 {
+  color: var(--color-white);
+}
+
+.page-header .tagline {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: var(--fs-small);
+  opacity: 0.85;
+  margin-bottom: 0.5rem;
+}
+
+.page-header p {
+  max-width: 40rem;
+  margin: 0 auto;
+  opacity: 0.9;
+}
+
+/* ---------- 4b. VIDEO SECTION ---------- */
+.video-section {
+  max-width: 60rem;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
+}
+
+.video-section video {
+  width: 100%;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: block;
+}
+
+/* ---------- 4c. CONTENT IMAGE ---------- */
+.content-image {
+  max-width: 60rem;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
+}
+
+.content-image img {
+  width: 100%;
+  max-height: 380px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: block;
+}
+
+.content-image p {
+  margin-top: 1.5rem;
+}
+
+/* ---------- 4d. ANIMATED MOTION BANNER ---------- */
+.motion-banner {
+  position: relative;
+  overflow: hidden;
+  max-width: 60rem;
+  margin: 3rem auto;
+  height: 260px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.motion-shape {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.shape-1 {
+  width: 220px;
+  height: 220px;
+  top: -60px;
+  left: -60px;
+  animation: floatMove 8s ease-in-out infinite;
+}
+
+.shape-2 {
+  width: 160px;
+  height: 160px;
+  bottom: -50px;
+  right: 10%;
+  animation: floatMove 10s ease-in-out infinite reverse;
+}
+
+.shape-3 {
+  width: 100px;
+  height: 100px;
+  top: 20%;
+  right: -30px;
+  animation: floatMove 6s ease-in-out infinite;
+}
+
+@keyframes floatMove {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(20px, 20px); }
+}
+
+.motion-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: var(--color-white);
+  padding: 1rem;
+}
+
+.motion-content h2 {
+  color: var(--color-white);
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.motion-content p {
+  opacity: 0.9;
+  margin-bottom: 0;
+}
+
+/* ---------- 5. SERVICES SECTION (GRID) ---------- */
+.services-section {
+  padding: 4rem 2rem;
+  max-width: 75rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.services-section .intro {
+  max-width: 40rem;
+  margin: 0 auto 2.5rem auto;
+  color: var(--color-grey-dark);
+}
+
+.services-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+  text-align: left;
+}
+
+.service-card {
+  background-color: var(--color-grey-light);
+  border: 1px solid var(--color-grey);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+  border-color: var(--color-primary);
+}
+
+.service-icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  border: 2px solid var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+.service-card ul {
+  margin-top: 0.75rem;
+}
+
+.service-card li {
+  font-size: var(--fs-small);
+  color: var(--color-grey-dark);
+  padding-left: 1rem;
+  position: relative;
+  margin-bottom: 0.25rem;
+}
+
+.service-card li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--color-primary);
+}
+
+/* ---------- 5b. SERVICE SEARCH ---------- */
+.service-search {
+  max-width: 30rem;
+  margin: 0 auto 2.5rem auto;
+  text-align: left;
+}
+
+.service-search label {
+  display: block;
+  font-size: var(--fs-small);
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.service-search input {
+  width: 100%;
+  font-family: var(--font-base);
+  font-size: var(--fs-body);
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--color-grey);
+  border-radius: 6px;
+  background-color: var(--color-white);
+}
+
+#noResultsMessage {
+  text-align: center;
+  color: var(--color-grey-dark);
+  margin-bottom: 1.5rem;
+}
+
+/* ---------- 6. CALL TO ACTION BANNER ---------- */
+.support-banner {
+  background-color: var(--color-accent);
+  text-align: center;
+  padding: 3.5rem 1.5rem;
+}
+
+.btn {
+  display: inline-block;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  font-weight: 600;
+  padding: 0.75rem 1.75rem;
+  border-radius: var(--radius);
+  border: none;
+  cursor: pointer;
+  transition: background-color var(--transition), transform var(--transition);
+  margin-top: 0.5rem;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* ---------- 7. FAQ SECTION ---------- */
+.faq-section {
+  padding: 4rem 2rem;
+  max-width: 50rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.faq-intro {
+  color: var(--color-grey-dark);
+  margin-bottom: 2rem;
+}
+
+.faq-container {
+  text-align: left;
+}
+
+.faq-item {
+  background-color: var(--color-grey-light);
+  border: 1px solid var(--color-grey);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.faq-item summary {
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  list-style: none;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  content: "+";
+  float: right;
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.faq-item[open] summary::after {
+  content: "–";
+}
+
+.faq-item summary:hover,
+.faq-item summary:focus {
+  color: var(--color-primary);
+}
+
+.faq-item p {
+  margin-top: 0.75rem;
+  color: var(--color-grey-dark);
+}
+
+/* ---------- 7b. GALLERY SECTION ---------- */
+.gallery-section {
+  padding: 4rem 2rem;
+  max-width: 75rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.gallery-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.gallery-container figure {
+  margin: 0;
+}
+
+.gallery-container img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-grey);
+  box-shadow: var(--shadow);
+  transition: transform var(--transition);
+}
+
+.gallery-container img:hover {
+  transform: scale(1.03);
+}
+
+.gallery-container figcaption {
+  margin-top: 0.6rem;
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--color-primary-dark);
+  text-align: center;
+}
+
+/* ---------- 8. CONTACT SECTION ---------- */
+.contact-section {
+  padding: 4rem 2rem;
+  max-width: 70rem;
+  margin: 0 auto;
+}
+
+.contact-container {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 3rem;
+}
+
+.contact-item {
+  margin-bottom: 1.25rem;
+}
+
+.contact-item h3 {
+  color: var(--color-primary);
+  font-size: var(--fs-body);
+}
+
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.contact-form label {
+  font-size: var(--fs-small);
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  font-family: var(--font-base);
+  font-size: var(--fs-body);
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--color-grey);
+  border-radius: 6px;
+  background-color: var(--color-grey-light);
+  transition: border-color var(--transition), background-color var(--transition);
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  background-color: var(--color-white);
+}
+
+.contact-form textarea {
+  resize: vertical;
+}
+
+/* ---------- 9. LIGHTBOX ---------- */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 1000;
+}
+
+.lightbox.active {
+  display: flex;
+}
+
+.lightbox-image {
+  max-width: 85vw;
+  max-height: 75vh;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.lightbox-caption {
+  color: var(--color-white);
+  margin-top: 1rem;
+  font-size: var(--fs-small);
+  text-align: center;
+  max-width: 40rem;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  color: var(--color-white);
+  font-size: 2.5rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.lightbox-close:hover {
+  color: var(--color-accent);
+}
+
+/* ---------- 10. FORM VALIDATION & CONFIRMATION ---------- */
+.error-message {
+  display: block;
+  color: #b00020;
+  font-size: var(--fs-small);
+  min-height: 1.2em;
+  margin-bottom: 0.25rem;
+}
+
+.confirmation-panel {
+  text-align: center;
+  padding: 1.5rem;
+  background-color: var(--color-accent);
+  border-radius: var(--radius);
+}
+
+.confirmation-panel h3 {
+  margin-bottom: 0.75rem;
+}
+
+/* ---------- 11. FOOTER ---------- */
+footer {
+  background-color: var(--color-primary-dark);
+  color: var(--color-white);
+  text-align: center;
+  padding: 2rem 1.5rem;
+}
+
+footer p {
+  margin-bottom: 0.25rem;
+  opacity: 0.9;
+}
+
+/* ---------- 12. RESPONSIVE ---------- */
+@media (max-width: 768px) {
+  .services-container {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-container {
+    grid-template-columns: 1fr;
+  }
+
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  header img {
+    height: 90px;
+  }
+}

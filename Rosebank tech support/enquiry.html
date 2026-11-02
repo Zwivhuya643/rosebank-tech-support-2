@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rosebank Tech Support | Enquiry</title>
+  <meta name="description" content="Submit a technical support enquiry to Rosebank Tech Support — select your issue type and get expected response times.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <img src="Images/logo.png" alt="Rosebank Tech Support logo" class="logo">
+    <nav>
+      <a href="index.html">Index</a>
+      <a href="home.html">Home</a>
+      <a href="about-us.html">About Us</a>
+      <a href="services.html">Services</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="FAQ.html">FAQ</a>
+      <a href="contact.html">Contact Us</a>
+      <a href="enquiry.html">Enquiry</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-header">
+      <h1>Service Enquiry</h1>
+      <p>
+        Use this form to request technical support for a specific service.
+        This form is for technical support enquiries only — it is not for
+        product purchases, volunteer applications, or sponsorship requests.
+      </p>
+    </section>
+
+    <section class="content-image">
+      <img src="Images/F.webp" alt="Shield with a check mark representing secure support" loading="lazy" style="max-width:520px;margin:0 auto;">
+    </section>
+
+    <section class="contact-section">
+      <div class="contact-container">
+
+        <div class="contact-information">
+          <h2>How It Works</h2>
+          <p>
+            Select the type of support you need and describe your problem.
+            Once submitted, you'll see the expected response time and next
+            steps for that service right here on the page.
+          </p>
+
+          <div class="contact-item">
+            <h3>Support Hours</h3>
+            <p>Monday – Friday: 08:00 – 17:00</p>
+          </div>
+        </div>
+
+        <div class="contact-form">
+          <h2>Submit an Enquiry</h2>
+
+          <form id="enquiryForm" novalidate>
+
+            <label for="enquiryName">Full Name</label>
+            <input type="text" id="enquiryName" name="enquiryName" placeholder="Enter your full name">
+            <span class="error-message" id="enquiryNameError"></span>
+
+            <label for="enquiryEmail">Email Address</label>
+            <input type="email" id="enquiryEmail" name="enquiryEmail" placeholder="Enter your email address">
+            <span class="error-message" id="enquiryEmailError"></span>
+
+            <label for="enquiryService">Type of Support Needed</label>
+            <select id="enquiryService" name="enquiryService">
+              <option value="">-- Select a service --</option>
+              <option value="computer">Computer Support</option>
+              <option value="network">Network Support</option>
+              <option value="account">Account &amp; Password Support</option>
+              <option value="email">Email Support</option>
+              <option value="student">Student Support</option>
+              <option value="software">Software Support</option>
+            </select>
+            <span class="error-message" id="enquiryServiceError"></span>
+
+            <label for="enquiryMessage">Describe Your Problem</label>
+            <textarea id="enquiryMessage" name="enquiryMessage" rows="5" placeholder="Please describe the issue you're experiencing..."></textarea>
+            <span class="error-message" id="enquiryMessageError"></span>
+
+            <button type="submit" class="btn">Submit Enquiry</button>
+
+          </form>
+
+          <div id="enquiryConfirmation" class="confirmation-panel" hidden>
+            <h3>Thank You!</h3>
+            <p id="confirmationText"></p>
+            <button type="button" class="btn" id="enquiryAnother">Submit Another Enquiry</button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Rosebank Tech Support</p>
+    <p>Reliable &bull; Secure &bull; Connected</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
